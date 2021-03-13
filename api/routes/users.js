@@ -32,19 +32,20 @@ router.post('/', async (req, res) => {
   }
 })
 
-// get specific user
+// get entry for specific user
 router.get('/:username', async function(req, res, next) {
   try {
-    let username = req.params.username;
-    let password = req.query.password;
-    console.log("username is", username);
-    console.log("password", password);
+    // initialize variables
+    let username = req.params.username; // username
+    let password = req.query.password;  // password
+    // retrieve from databasen using username password as filter
     const users = await User.find({username: username, password: password})
 
-    if (users.length === 1 ){
+
+    if (users.length === 1 ){ // user is found/verified
       res.status(200).json({ response: users });    
     }
-    else{
+    else{ // one or more credentials is not valid
       res.status(400).json({ response: null });
     }
   } catch (error) {
