@@ -7,7 +7,8 @@ import { Link } from 'react-router-dom'
 
 // components
 import GoogleLogin from './components/google-login';    // google login
-import GoogleLogout from './components/google-logout';    // google login
+//import GoogleLogout from './components/google-logout';    // google login
+import FacebookLogin from './components/facebook-login' // facebook login
 
 export default function Login(){
     const [credentials, setCredentials] = useState({username:"", password:""})
@@ -73,6 +74,7 @@ export default function Login(){
                 <div style={{ marginTop:"5px" }}><Link to="/signup">Or sign up here</Link></div>
                 <button className="enter-btn" type="submit">Enter</button>
                 <GoogleLogin/>
+                <FacebookLogin/>
             </form>
         </div>
     )
